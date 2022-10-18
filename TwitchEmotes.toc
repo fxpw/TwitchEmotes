@@ -9,5 +9,5 @@
 
 libs\load_libs.xml
 TwitchEmotes.lua
-TwitchEmotes.xml
-Verchecktw.lua
+# TwitchEmotes.xml
+# Verchecktw.lua
