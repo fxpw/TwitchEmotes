@@ -242,7 +242,7 @@ function TWE:CreatePickEmoteButton(i)
 	button.texture = button:CreateTexture();
 	button.texture:SetPoint("CENTER",button,"CENTER",0,0)
 	button.texture:SetSize(30,30)
-	-- print(#TWE.Emotes)
+
 	button.texture:SetTexture(CreateEmotesPath(TWE.Emotes[math.random(1,2)][1]));
 end
 
@@ -250,9 +250,7 @@ end
 function TWE:CreatePickEmoteButtons()
 	local width, height = self.MainFrame:GetSize();
 	a = math.floor(width/32)-1
-	-- print(a)
 	b = math.floor(height/32)-1
-	-- print(b)
 	for i = 1,a*b do
         self:CreatePickEmoteButton(i);
     end
@@ -322,8 +320,6 @@ function TWE:CreatePickEmoteScrollFrame()
 	end
 	TWEMainFramePickFrameScrollParentScrollFrameScrollBarBorder:Hide()
 	strip(frame)
-	-- frame:CreateBackdrop()
-	-- frame.backdrop:SetTexture()
 
 	self:UpdatePickScrollButtons()
 end
@@ -378,39 +374,19 @@ function TWE:MessageFilter(event, msg, ...)
 
     return false, msg, ...
 end
--- local i = 1
+
 local emoteSize = tonumber(64)
 local re,pl
--- local tableForEmotes = {}
 local emote
 local si,ze
 local emoteName
 function TWE:RunReplacement(msg)
-    -- remember to watch out for |H|h|h's
 	local msg = msg
 	local outstr = "";
-	-- local nameForFind
 	local copyMsg = msg
 	emoteSize = nil
 	emote = ""
 	local len = #msg
-	-- for i = 1,#TWE.Emotes do
-	-- 	re,pl  = string.find(msg, ":"..TWE.Emotes[i][1]..":")
-	-- 	if re and pl then
-	-- 		emoteName = string.sub(msg,re+1,pl-1)
-	-- 		len = #msg
-	-- 		si,ze = string.find(msg, ":(%d+):")
-	-- 		if si and ze then
-	-- 			emoteSize = tonumber(string.sub(msg,si+1,ze-1))
-	-- 			pl = ze
-	-- 		else
-	-- 			emoteSize = 64
-	-- 		end
-	-- 		-- local emoteNew = TWE:CreateEmote(emoteName,emoteSize)
-	-- 		emote = emote.. TWE:CreateEmote(emoteName,emoteSize)
-	-- 		msg = string.sub(msg,pl+1,len)
-	-- 	end
-	-- end
 	local last = false
 	while last == false do
 		re,pl  = string.find(msg, ":(%a+):")
@@ -426,110 +402,24 @@ function TWE:RunReplacement(msg)
 			else
 				emoteSize = 64
 			end
-			-- local emoteNew = TWE:CreateEmote(emoteName,emoteSize)
 			emote = emote.. TWE:CreateEmote(emoteName,emoteSize)
 			msg = string.sub(msg,pl+1,len)
-			-- i = 0
+
 			last = false
 		else
 			last = true
 		end
-		-- i=i+1
+
 	end
-
-
-
 	outstr = emote..msg
-	-- print(outstr)
-	-- local outstr = "";
-    -- local origlen = string.len(msg);
-    -- local startpos = 1;
-    -- local endpos;
-	-- local nameForFind
-	-- local emoteName
-	-- while (startpos <= origlen) do
-    --     endpos = origlen;
-    --     local pos = string.find(msg, "|H", startpos, true);
-    --     if (pos ~= nil) then endpos = pos; end
-	-- 		for i = 1,#TWE.Emotes do
-	-- 			re,pl  = string.find(msg, "#"..TWE.Emotes[i][1].."#")
-	-- 			if re and pl then
-	-- 				emoteName = string.sub(msg,re+1,pl-1)
-	-- 				local si,ze = string.find(msg, "#(%d+)#")
-	-- 				if si and ze then
-	-- 					emoteSize = tonumber(string.sub(msg,si+1,ze-1))
-	-- 					-- print(size)
-	-- 					pl = ze
-	-- 				end
-	-- 				outstr = outstr ..TWE:CreateEmote(emoteName,emoteSize); -- run replacement on this bit
-	-- 				startpos = endpos + 1;
-	-- 				if (pos ~= nil) then
-	-- 					endpos = string.find(msg, "|h", startpos, true);
-	-- 					if (endpos == nil) then endpos = origlen; end
-	-- 					if (startpos < endpos) then
-	-- 						outstr = outstr .. string.sub(msg, startpos, endpos); -- don't run replacement on this bit
-	-- 						startpos = endpos + 1;
-	-- 					end
-	-- 				end
-	-- 			end
-	-- 		end
-	-- 	break
-			
-        -- outstr = outstr ..TWE:CreateEmote(emoteName,emoteSize); -- run replacement on this bit
-       
-    -- end
+
     return outstr == "" and copyMsg or outstr;
 end
 
-local replase
+
 function TWE:CreateEmote(emoteName,emoteSize)
-	-- if not emoteName then return end
-	-- replase = "|T".."#"..emoteName.."#"..(emoteSize and emoteSize.."#" or "").."|t"
-	-- if not emoteSize then
-	-- 	emoteSize = 64
-	-- end
-	-- local size
-	-- local pathAndSize
-	-- local name
-	-- local nameWhitDots
-	-- local msg
-	-- local msg
-	local pathAndSize = "|T"..CreateEmotesPath(emoteName)..":"..emoteSize..":"..emoteSize.."|t"
-	-- print(pathAndSize)
-	-- msg = pathAndSize
-
-	-- for i = 1,#TWE.Emotes do
-		-- nameWhitDots = "#"..TWE.Emotes[i][1].."#"
-        -- if (string.find(msg, nameWhitDots)) then
-			-- name = TWE.Emotes[i][1]
-			-- local _, size = msg:match("%:(%s+)%:(%d+)");
-			-- name = msg:match("%:(%s+)%:");
-			-- local na,me = string.find(msg,nameWhitDots)
-			-- name = string.sub(msg,na,me)
-			-- print(name)
-			-- local si,ze = string.find(msg,":(%d+)")
-			-- local size = string.sub(msg,si,ze)
-			-- local size = string.match(msg, "%d+")
-			-- size = tonumber(size) or 64;
-			-- if size > 256 then
-				-- size = 256
-				-- print("Ну и зачем так много? Максимум выставлен в 256 если что")
-			-- end
-			-- name = name or "Ban";
-			-- nameWhitDots = nameWhitDots ..size
-			-- print(msg)
-	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%s)", "%1|T" .. pathAndSize .. "|t%2");
-	-- replase = string.gsub(replase, "(%s)" .. replase .. "$","%1|T" .. pathAndSize .. "|t");
-	-- replase = string.gsub(replase, "^" .. replase .. "(%s)", "|T" .. pathAndSize .. "|t%1");
-	-- replase = string.gsub(replase, "^" .. replase .. "$", "|T" .. pathAndSize .. "|t");
-	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%c)", "%1|T" .. pathAndSize .. "|t%2");
-	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%s)","%1|T" .. pathAndSize .. "|t%2");
-			-- break
-	-- i = 1
-    	-- end
-	-- end
-
-    return pathAndSize;
+	local emoteForReturn = "|T"..CreateEmotesPath(emoteName)..":"..emoteSize..":"..emoteSize.."|t"
+    return emoteForReturn;
 end
 
 function TWE:OnBlur()
