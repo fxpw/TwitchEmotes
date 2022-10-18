@@ -393,7 +393,25 @@ function TWE:RunReplacement(msg)
 	emoteSize = nil
 	emote = ""
 	local len = #msg
-	for i = 1,#TWE.Emotes do
+	-- for i = 1,#TWE.Emotes do
+	-- 	re,pl  = string.find(msg, ":"..TWE.Emotes[i][1]..":")
+	-- 	if re and pl then
+	-- 		emoteName = string.sub(msg,re+1,pl-1)
+	-- 		len = #msg
+	-- 		si,ze = string.find(msg, ":(%d+):")
+	-- 		if si and ze then
+	-- 			emoteSize = tonumber(string.sub(msg,si+1,ze-1))
+	-- 			pl = ze
+	-- 		else
+	-- 			emoteSize = 64
+	-- 		end
+	-- 		-- local emoteNew = TWE:CreateEmote(emoteName,emoteSize)
+	-- 		emote = emote.. TWE:CreateEmote(emoteName,emoteSize)
+	-- 		msg = string.sub(msg,pl+1,len)
+	-- 	end
+	-- end
+	local i = 1
+	while i < #TWE.Emotes do
 		re,pl  = string.find(msg, ":"..TWE.Emotes[i][1]..":")
 		if re and pl then
 			emoteName = string.sub(msg,re+1,pl-1)
@@ -408,8 +426,13 @@ function TWE:RunReplacement(msg)
 			-- local emoteNew = TWE:CreateEmote(emoteName,emoteSize)
 			emote = emote.. TWE:CreateEmote(emoteName,emoteSize)
 			msg = string.sub(msg,pl+1,len)
+			i = 0
 		end
+		i=i+1
 	end
+
+
+
 	outstr = emote..msg
 	-- print(outstr)
 	-- local outstr = "";
