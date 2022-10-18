@@ -1,6 +1,6 @@
 ## Interface: 30300
 ## Title:|cFF8C00FFTwitch Emotes
-## Version: 1.10
+## Version: 1.11
 ## Notes:|cFFFFFFFFИспользуй эмодзи в чате игры!
 ## Author: fxpw, Фалафель
 
