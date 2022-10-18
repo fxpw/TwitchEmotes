@@ -238,7 +238,6 @@ function TWE:CreatePickEmoteButton(i)
         end
     end)
 
-
 	button.texture = button:CreateTexture();
 	button.texture:SetPoint("CENTER",button,"CENTER",0,0)
 	button.texture:SetSize(30,30)
