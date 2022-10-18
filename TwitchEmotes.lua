@@ -167,6 +167,7 @@ TWE.Emotes = {
 	{"Daa"},
 	{"DerevoTebyaXochet"},
 	{"Dikaprio"},
+	-- speshl from anyastarfoll
 	{"JakFresko"},
 	{"GlybokayaTajka"},
 	{"KachokChista"},
@@ -410,15 +411,17 @@ function TWE:RunReplacement(msg)
 	-- 		msg = string.sub(msg,pl+1,len)
 	-- 	end
 	-- end
-	local i = 1
-	while i < #TWE.Emotes do
-		re,pl  = string.find(msg, ":"..TWE.Emotes[i][1]..":")
+	local last = false
+	while last == false do
+		re,pl  = string.find(msg, ":(%a+):")
+		-- /dump string.find(":Bigbrain:32:    ",":(%a+):")
 		if re and pl then
 			emoteName = string.sub(msg,re+1,pl-1)
 			len = #msg
-			si,ze = string.find(msg, ":(%d+):")
+			local tempMsg = string.sub(msg,re,pl+4)
+			si,ze = string.find(tempMsg, ":(%d+):")
 			if si and ze then
-				emoteSize = tonumber(string.sub(msg,si+1,ze-1))
+				emoteSize = tonumber(string.sub(tempMsg,si+1,ze-1))
 				pl = ze
 			else
 				emoteSize = 64
@@ -426,9 +429,12 @@ function TWE:RunReplacement(msg)
 			-- local emoteNew = TWE:CreateEmote(emoteName,emoteSize)
 			emote = emote.. TWE:CreateEmote(emoteName,emoteSize)
 			msg = string.sub(msg,pl+1,len)
-			i = 0
+			-- i = 0
+			last = false
+		else
+			last = true
 		end
-		i=i+1
+		-- i=i+1
 	end
 
 
