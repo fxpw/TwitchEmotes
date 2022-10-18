@@ -200,7 +200,7 @@ local function CreateEmotesPath(name)
 end
 
 local function CreateEmotesLinkForChat(name)
-	name = "#"..name.."#"
+	name = ":"..name..":"
 	return name
 end
 
@@ -394,11 +394,11 @@ function TWE:RunReplacement(msg)
 	emote = ""
 	local len = #msg
 	for i = 1,#TWE.Emotes do
-		re,pl  = string.find(msg, "#"..TWE.Emotes[i][1].."#")
+		re,pl  = string.find(msg, ":"..TWE.Emotes[i][1]..":")
 		if re and pl then
 			emoteName = string.sub(msg,re+1,pl-1)
 			len = #msg
-			si,ze = string.find(msg, "#(%d+)#")
+			si,ze = string.find(msg, ":(%d+):")
 			if si and ze then
 				emoteSize = tonumber(string.sub(msg,si+1,ze-1))
 				pl = ze
@@ -455,7 +455,7 @@ end
 local replase
 function TWE:CreateEmote(emoteName,emoteSize)
 	-- if not emoteName then return end
-	replase = "#"..emoteName.."#"..(emoteSize and emoteSize.."#" or "")
+	-- replase = "|T".."#"..emoteName.."#"..(emoteSize and emoteSize.."#" or "").."|t"
 	-- if not emoteSize then
 	-- 	emoteSize = 64
 	-- end
@@ -465,7 +465,7 @@ function TWE:CreateEmote(emoteName,emoteSize)
 	-- local nameWhitDots
 	-- local msg
 	-- local msg
-	local pathAndSize = CreateEmotesPath(emoteName)..":"..emoteSize..":"..emoteSize
+	local pathAndSize = "|T"..CreateEmotesPath(emoteName)..":"..emoteSize..":"..emoteSize.."|t"
 	-- print(pathAndSize)
 	-- msg = pathAndSize
 
@@ -489,18 +489,18 @@ function TWE:CreateEmote(emoteName,emoteSize)
 			-- name = name or "Ban";
 			-- nameWhitDots = nameWhitDots ..size
 			-- print(msg)
-	replase = string.gsub(replase, "(%s)" .. replase .. "(%s)", "%1|T" .. pathAndSize .. "|t%2");
-	replase = string.gsub(replase, "(%s)" .. replase .. "$","%1|T" .. pathAndSize .. "|t");
-	replase = string.gsub(replase, "^" .. replase .. "(%s)", "|T" .. pathAndSize .. "|t%1");
-	replase = string.gsub(replase, "^" .. replase .. "$", "|T" .. pathAndSize .. "|t");
-	replase = string.gsub(replase, "(%s)" .. replase .. "(%c)", "%1|T" .. pathAndSize .. "|t%2");
-	replase = string.gsub(replase, "(%s)" .. replase .. "(%s)","%1|T" .. pathAndSize .. "|t%2");
+	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%s)", "%1|T" .. pathAndSize .. "|t%2");
+	-- replase = string.gsub(replase, "(%s)" .. replase .. "$","%1|T" .. pathAndSize .. "|t");
+	-- replase = string.gsub(replase, "^" .. replase .. "(%s)", "|T" .. pathAndSize .. "|t%1");
+	-- replase = string.gsub(replase, "^" .. replase .. "$", "|T" .. pathAndSize .. "|t");
+	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%c)", "%1|T" .. pathAndSize .. "|t%2");
+	-- replase = string.gsub(replase, "(%s)" .. replase .. "(%s)","%1|T" .. pathAndSize .. "|t%2");
 			-- break
 	-- i = 1
     	-- end
 	-- end
 
-    return replase;
+    return pathAndSize;
 end
 
 function TWE:OnBlur()
@@ -529,8 +529,8 @@ function TWE:OnEvent(event, ...)
 		for i=1, NUM_CHAT_WINDOWS do
 			local ChatFrameEditBox = _G["ChatFrame"..i.."EditBox"];
 			if (ChatFrameEditBox) then
-				ChatFrameEditBox:SetScript("OnMouseDown",TWE.OnMouseDown);
-				ChatFrameEditBox:SetScript("OnEditFocusLost",TWE.OnBlur);
+				ChatFrameEditBox:HookScript("OnMouseDown",TWE.OnMouseDown);
+				ChatFrameEditBox:HookScript("OnEditFocusLost",TWE.OnBlur);
 			end
 		end
 		TWE:CreateMainFrame()
