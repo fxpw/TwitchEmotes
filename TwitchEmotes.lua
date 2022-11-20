@@ -155,9 +155,9 @@ TWE.Emotes = {
 	{"prot"},
 	{"vihr"},
 	{"BannyOyMay"},
-	{"tylerfB"},
-	{"tylerS"},
 	{"tylersB"},
+	{"tylerS"},
+	{"tylerfB"},
 	{"ChistoTi"},
 	{"ChivoBleat"},
 	{"CigaretaPacan"},
@@ -212,15 +212,15 @@ local a,b
 local NumButtonsPerRow
 function TWE:CreatePickEmoteButton(i)
 	self.MainFrame.PickFrame["PickEmoteButton"..i] = CreateFrame("Button","$parentPickEmoteButton"..i, self.MainFrame.PickFrame);
-    local button = self.MainFrame.PickFrame["PickEmoteButton"..i];
-    -- button:SetBackdrop({
+local button = self.MainFrame.PickFrame["PickEmoteButton"..i];
+	-- button:SetBackdrop({
 	-- 	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
 	-- 	edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
 	-- 	edgeSize = 16,
 	-- 	insets = { left = 4, right = 4, top = 4, bottom = 4},
 	-- });
 	NumButtonsPerRow = a
-    button:SetSize(32,32);
+	button:SetSize(32,32);
     button:RegisterForClicks("AnyUp");
     if i == 1 then
 		button:SetPoint("TOPLEFT",24,-32);
