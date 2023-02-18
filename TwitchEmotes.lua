@@ -350,7 +350,7 @@ function TWE:CreateMainFrame()
 	self.MainFrame.PickFrame.TWE = self.MainFrame.PickFrame:CreateFontString(nil,"ARTWORK","GameFontNormal")
 	self.MainFrame.PickFrame.TWE:SetFont(GameFontNormal:GetFont(), 45)
 	self.MainFrame.PickFrame.TWE:SetPoint("CENTER",self.MainFrame.PickFrame,"TOP",0,0)
-	self.MainFrame.PickFrame.TWE:SetText("|cFF8C00FF"..AddOnName)
+	self.MainFrame.PickFrame.TWE:SetText("|cFF8C00FFTwitchEmotes")
 	self:CreatePickEmoteButtons();
 	self:CreatePickEmoteScrollFrame();
 end
