@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.globals": [
+        "FauxScrollFrame_GetOffset",
+        "FauxScrollFrame_Update",
+        "FauxScrollFrame_OnVerticalScroll",
+        "ChatFrame_AddMessageEventFilter",
+        "NUM_CHAT_WINDOWS",
+        "ChatFrame1",
+        "GameFontNormal",
+        "ChatFrame_RemoveMessageEventFilter"
+    ]
+}
