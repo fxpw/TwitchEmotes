@@ -437,10 +437,7 @@ function TWE:OnMouseDown(button,down)
 end
 
 
-Engine[1] = TWE
-Engine[2] = Locale
 
-_G[AddOnName] = Engine
 
 function TWE:OnEvent(event, ...)
     if (event == "ADDON_LOADED" and select(1, ...) == "TwitchEmotes") then
@@ -459,4 +456,11 @@ end
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent",TWE.OnEvent)
+
+
+
+Engine[1] = TWE
+Engine[2] = Locale
+
+_G[AddOnName] = Engine
 

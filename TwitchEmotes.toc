@@ -7,7 +7,7 @@
 ## SavedVariables: Emoticons_Settings
 ## OptionalDeps: LibStub, LibUIDropDownMenu
 
-libs\load_libs.xml
+# libs\load_libs.xml
 TwitchEmotes.lua
 # TwitchEmotes.xml
 # Verchecktw.lua
