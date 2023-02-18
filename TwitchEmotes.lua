@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-field, undefined-global
 
-local AddOnName, Engine = ...
+
 local TWE = {}
 local Locale = {}
 local FauxScrollFrame_GetOffset = FauxScrollFrame_GetOffset
@@ -459,8 +459,4 @@ f:SetScript("OnEvent",TWE.OnEvent)
 
 
 
-Engine[1] = TWE
-Engine[2] = Locale
-
-_G[AddOnName] = Engine
 
