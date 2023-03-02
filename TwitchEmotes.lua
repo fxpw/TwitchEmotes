@@ -193,6 +193,8 @@ TWE.Emotes = {
 	{"forsenL"},
 	{"jerryshok"},
 	{"vovchic"},
+	{"bliz1"},
+	{"bliz2"},
 }
 
 local function CreateEmotesPath(name)
