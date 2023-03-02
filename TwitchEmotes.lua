@@ -192,6 +192,7 @@ TWE.Emotes = {
 	{"Zybastiy"},
 	{"forsenL"},
 	{"jerryshok"},
+	{"vovchic"},
 }
 
 local function CreateEmotesPath(name)
@@ -212,13 +213,7 @@ local a,b
 local NumButtonsPerRow
 function TWE:CreatePickEmoteButton(i)
 	self.MainFrame.PickFrame["PickEmoteButton"..i] = CreateFrame("Button","$parentPickEmoteButton"..i, self.MainFrame.PickFrame);
-local button = self.MainFrame.PickFrame["PickEmoteButton"..i];
-	-- button:SetBackdrop({
-	-- 	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
-	-- 	edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
-	-- 	edgeSize = 16,
-	-- 	insets = { left = 4, right = 4, top = 4, bottom = 4},
-	-- });
+	local button = self.MainFrame.PickFrame["PickEmoteButton"..i];
 	NumButtonsPerRow = a
 	button:SetSize(32,32);
     button:RegisterForClicks("AnyUp");
@@ -435,9 +430,6 @@ function TWE:OnMouseDown(button,down)
 		end
 	end
 end
-
-
-
 
 function TWE:OnEvent(event, ...)
     if (event == "ADDON_LOADED" and select(1, ...) == "TwitchEmotes") then
