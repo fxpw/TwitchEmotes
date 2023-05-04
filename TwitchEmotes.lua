@@ -103,7 +103,7 @@ TWE.Emotes = {
 	{"Pepe_cookie"},
 	{"Pepe_DealWith"},
 	{"Pepe_laught"},
-	{"Pepe_Love"},
+	-- {"Pepe_Love"},
 	{"Pepe_Ok"},
 	{"Pepe_Thinking"},
 	{"PepeBoen"},
