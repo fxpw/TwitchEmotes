@@ -6,7 +6,7 @@
 
 ## SavedVariables: Emoticons_Settings
 ## OptionalDeps: LibStub, LibUIDropDownMenu
-## X-Sirus-Update: https://github.com/fxpw/TwitchEmotes
+## X-Sirus-Update: https://github.com/fxpw/TwitchEmotes/tree/master
 
 # libs\load_libs.xml
 TwitchEmotes.lua
